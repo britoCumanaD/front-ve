@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "skills": {
+    "title": "Skills",
+    "technical": "Technical Skills",
+    "soft": "Soft Skills",
+    "softSkills": {
+      "leadership": "Leadership",
+      "communication": "Communication",
+      "teamwork": "Teamwork",
+      "problemSolving": "Problem Solving",
+      "adaptability": "Adaptability"
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "viewProject": "View Project",
+    "projects": {
+      "ecommerce": "A full-featured e-commerce platform with cart management, payment processing, and order tracking.",
+      "taskManager": "A collaborative task management application with real-time updates and team features."
+    }
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "roles": {
+      "projectManager": "Project Manager",
+      "techLead": "Technical Lead"
+    },
+    "quotes": {
+      "john": "An exceptional developer who consistently delivers high-quality work and brings innovative solutions to complex problems.",
+      "jane": "Their technical expertise and ability to work well with the team made our project a great success."
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

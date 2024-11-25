@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: 'Courier New', Courier, monospace; /* Fuente similar a la de VS Code */
+  background-color: #1e1e1e; /* Color de fondo oscuro */
+  color: #d4d4d4; /* Color de texto claro */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #333; /* Fondo del navbar */
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style-type: none; /* Sin viñetas */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline; /* Mostrar elementos en línea */
+}
+
+.navbar a {
+  color: #569cd6; /* Color azul claro para los enlaces */
+  text-decoration: none; /* Sin subrayado */
+  padding: 10px 15px; /* Espaciado interno */
+}
+
+.navbar a:hover {
+  background-color: #007acc; /* Color de fondo al pasar el mouse */
+}
+
+section {
+  padding: 20px;
+}
+
+h2 {
+  color: #ce9178; /* Color para los encabezados */
+}
+
+p {
+  color: #d4d4d4; /* Color para los párrafos */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

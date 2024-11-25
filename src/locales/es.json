@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "skills": "Habilidades",
+    "portfolio": "Portafolio",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "technical": "Habilidades Técnicas",
+    "soft": "Habilidades Blandas",
+    "softSkills": {
+      "leadership": "Liderazgo",
+      "communication": "Comunicación",
+      "teamwork": "Trabajo en Equipo",
+      "problemSolving": "Resolución de Problemas",
+      "adaptability": "Adaptabilidad"
+    }
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "viewProject": "Ver Proyecto",
+    "projects": {
+      "ecommerce": "Una plataforma de comercio electrónico completa con gestión de carrito, procesamiento de pagos y seguimiento de pedidos.",
+      "taskManager": "Una aplicación de gestión de tareas colaborativa con actualizaciones en tiempo real y funciones de equipo."
+    }
+  },
+  "testimonials": {
+    "title": "Testimonios",
+    "roles": {
+      "projectManager": "Gerente de Proyecto",
+      "techLead": "Líder Técnico"
+    },
+    "quotes": {
+      "john": "Un desarrollador excepcional que constantemente entrega trabajo de alta calidad y aporta soluciones innovadoras a problemas complejos.",
+      "jane": "Su experiencia técnica y capacidad para trabajar bien con el equipo hicieron que nuestro proyecto fuera un gran éxito."
+    }
+  },
+  "contact": {
+    "title": "Contáctame",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "message": "Mensaje",
+      "submit": "Enviar Mensaje"
+    }
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}
