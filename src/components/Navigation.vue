@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import MobileMenu from './MobileMenu.vue'
 
 const { t } = useI18n()
 
@@ -12,16 +13,19 @@ const navItems = [
 </script>
 
 <template>
-  <nav>
-    <ul class="flex space-x-8">
-      <li v-for="item in navItems" :key="item.id">
-        <a
-          :href="item.href"
-          class="text-gray-600 hover:text-indigo-600 font-medium transition-colors duration-300"
-        >
-          {{ t(item.label) }}
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <div class="items-center hidden">
+    <MobileMenu />
+    <nav class="hidden md:block">
+      <ul class="flex space-x-8">
+        <li v-for="item in navItems" :key="item.id">
+          <a
+            :href="item.href"
+            class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-colors duration-300"
+          >
+            {{ t(item.label) }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>

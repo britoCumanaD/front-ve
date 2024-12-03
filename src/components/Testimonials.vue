@@ -1,60 +1,77 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+  import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+  import 'vue3-carousel/dist/carousel.css'
+  import { computed } from 'vue'
+  import { usePageStore } from '@/stores/page/page'
 
-const { t } = useI18n()
+  import { useI18n } from 'vue-i18n'
 
-const testimonials = ref([
-  {
-    id: 1,
-    author: 'John Doe',
-    role: 'testimonials.roles.projectManager',
-    company: 'Tech Corp',
-    image: '/images/testimonials/john.jpg',
-    quote: 'testimonials.quotes.john'
-  },
-  {
-    id: 2,
-    author: 'Jane Smith',
-    role: 'testimonials.roles.techLead',
-    company: 'Innovation Labs',
-    image: '/images/testimonials/jane.jpg',
-    quote: 'testimonials.quotes.jane'
-  }
-])
+  const { t } = useI18n()
+
+  const usePage = usePageStore()
+  const testimonials = computed(() => {
+    const pageData = usePage.pageData 
+    return pageData['admin-testimonials'] ? pageData['admin-testimonials'] : []
+  })
+  
+  const config = {
+    loop: true, 
+  };
+  const breakpoints = {
+    0: {
+      itemsToShow: 1,
+    },
+    768: {
+      itemsToShow: 2,
+    },
+    1024: {
+      itemsToShow: 3,
+    },
+  };
+
 </script>
 
 <template>
-  <section class="py-16 bg-white" id="testimonials">
+  <section class="py-16 bg-gray-100 dark:bg-gray-900" id="testimonials">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">
-        {{ t('testimonials.title') }}
-      </h2>
+      <section class="flex justify-center">
+        <h2 class="title-section" v-text="t('testimonials.title')" />
+      </section>
       
-      <div class="grid md:grid-cols-2 gap-8">
-        <div
-          v-for="testimonial in testimonials"
-          :key="testimonial.id"
-          class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
-        >
-          <div class="flex items-center mb-6">
-            <img
-              :src="testimonial.image"
-              :alt="testimonial.author"
-              class="w-16 h-16 rounded-full object-cover ring-4 ring-indigo-100"
-            />
-            <div class="ml-4">
-              <h3 class="text-xl font-semibold text-gray-900">{{ testimonial.author }}</h3>
-              <p class="text-indigo-600 font-medium">
-                {{ t(testimonial.role) }} @ {{ testimonial.company }}
-              </p>
+      <Carousel v-bind="config" :breakpoints="breakpoints" >
+        <Slide v-for="(testimonial, index) in testimonials" :key="index">
+            <div
+              class="bg-gradient-to-br from-blue-50 to-white dark:from-gray-700 dark:to-gray-800 p-4 rounded-xl shadow-lg transform  transition-all duration-300 md:m-8 w-full"
+            >
+              <div class="flex flex-col items-center mb-2">
+                <img v-if="testimonial.image"
+                  :src="testimonial.image"
+                  :alt="testimonial.name"
+                  class="w-16 h-16 rounded-full object-cover ring-4 ring-blue-100"
+                />
+                <div class="ml-4">
+                  <h3 class="text-xl font-semibold text-black dark:text-white truncate">{{ testimonial.name }}</h3>
+                  <p v-if="testimonial.cargo"  
+                    class="text-blue-600 dark:text-blue-300 font-medium truncate" 
+                    v-text="testimonial.cargo" 
+                  />
+                  <a v-if="testimonial.email" 
+                    class="text-blue-600 dark:text-blue-300 font-medium truncate" 
+                    :href="`mailto:${testimonial.email}`"
+                    v-text="testimonial.email" 
+                  />
+                </div>
+              </div>
+              <blockquote class="text-gray-700 dark:text-gray-300 text-lg italic leading-relaxed h-32 light-scroll"
+                v-text="testimonial.testimonial"
+              />
             </div>
-          </div>
-          <blockquote class="text-gray-700 text-lg italic leading-relaxed">
-            "{{ t(testimonial.quote) }}"
-          </blockquote>
-        </div>
-      </div>
+        </Slide>
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
     </div>
   </section>
 </template>

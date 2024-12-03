@@ -1,4 +1,13 @@
 {
+  "banner": {
+    "title": "Daniel Brito",
+    "profession": "Desarrollador Web Full Stack",
+    "description_line_1": "Con 7 años de experiencia - Experto en crear experiencias digitales inmersivas",
+    "description_line_2": "Con un sólido conocimiento en"
+  },
+  "common": {
+    "contact": "Contactar"
+  },
   "nav": {
     "skills": "Habilidades",
     "portfolio": "Portafolio",
@@ -6,7 +15,7 @@
     "contact": "Contacto"
   },
   "skills": {
-    "title": "Habilidades",
+    "title": "Experiencia Tecnológica",
     "technical": "Habilidades Técnicas",
     "soft": "Habilidades Blandas",
     "softSkills": {
@@ -19,7 +28,7 @@
   },
   "portfolio": {
     "title": "Portafolio",
-    "viewProject": "Ver Proyecto",
+    "viewProject": "Go to github",
     "projects": {
       "ecommerce": "Una plataforma de comercio electrónico completa con gestión de carrito, procesamiento de pagos y seguimiento de pedidos.",
       "taskManager": "Una aplicación de gestión de tareas colaborativa con actualizaciones en tiempo real y funciones de equipo."

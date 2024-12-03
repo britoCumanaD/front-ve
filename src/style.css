@@ -1,60 +1,132 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  font-family: 'Courier New', Courier, monospace; /* Fuente similar a la de VS Code */
-  background-color: #1e1e1e; /* Color de fondo oscuro */
-  color: #d4d4d4; /* Color de texto claro */
-  margin: 0;
-  padding: 0;
+
+body{
+  @apply bg-white dark:bg-gray-900 transition-colors duration-200 m-0 text-black dark:text-white;
+  scrollbar-color: var(--color, #000000) var(--color_bg, #999999) !important;
+  font-family: Arial, sans-serif;
+}
+.wrapper{
+    width: 90%;
+    max-width: 1320px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.navbar {
-  background-color: #333; /* Fondo del navbar */
-  padding: 10px;
+.bg-change-white {
+  @apply bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-200
 }
 
-.navbar ul {
-  list-style-type: none; /* Sin viñetas */
-  margin: 0;
-  padding: 0;
+.menu{
+  @apply flex;
+}
+.menu > li {
+  @apply mr-8;
 }
 
-.navbar li {
-  display: inline; /* Mostrar elementos en línea */
+.overlay {
+  @apply bg-white dark:bg-gray-900;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  animation: slideUp 1s forwards;
 }
 
-.navbar a {
-  color: #569cd6; /* Color azul claro para los enlaces */
-  text-decoration: none; /* Sin subrayado */
-  padding: 10px 15px; /* Espaciado interno */
-}
-
-.navbar a:hover {
-  background-color: #007acc; /* Color de fondo al pasar el mouse */
-}
-
-section {
-  padding: 20px;
-}
-
-h2 {
-  color: #ce9178; /* Color para los encabezados */
-}
-
-p {
-  color: #d4d4d4; /* Color para los párrafos */
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
   }
-  a:hover {
-    color: #747bff;
+  to {
+    transform: translateY(0);
+    opacity: 0;
   }
-  button {
-    background-color: #f9f9f9;
+}
+.content {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.loaded .overlay {
+  display: none;
+}
+
+.loaded .content {
+  opacity: 1;
+}
+
+
+
+.menu a, .button-change-mode {
+  @apply transition-colors text-black dark:text-white;
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+  font-size: 18px;
+  
+}
+
+.menu a::after, .button-change-mode::after {
+  @apply bg-black dark:bg-white;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.menu a:hover::after, .button-change-mode:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.title-section {
+  @apply text-2xl md:text-4xl text-gray-900 dark:text-white mb-12 relative pb-2
+}
+
+.title-section::after {
+  @apply bg-black dark:bg-white absolute;
+  content: "";
+  left: 25%; 
+  bottom: 0; 
+  height: 2px; 
+  width: 50%; 
+}
+
+.carousel-3d-slide{
+  background: none !important;
+  border: none !important;
+}
+.carousel-3d-container, .carousel-3d-slider, .carousel-3d-slide{
+  height: 120px !important;
+  width: 100% !important;
+}
+
+.light-scroll {
+  @apply overflow-auto;
+  scrollbar-color: #dbdbdb transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+      width: 2px;
+      background-color: transparent;
   }
+  &::-webkit-scrollbar-thumb {
+      width: 2px;
+      background-color: #dbdbdb;
+  }
+}
+
+.carousel__prev, .carousel__next{
+  @apply text-black dark:text-white !important;
+}
+.carousel__pagination-button--active::after {
+  @apply bg-black dark:bg-white !important;
 }

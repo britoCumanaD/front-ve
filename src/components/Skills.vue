@@ -1,75 +1,84 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useI18n } from 'vue-i18n'
+import { Carousel3d, Slide } from '@nanoandrew4/vue3-carousel-3d';
+
+import '@nanoandrew4/vue3-carousel-3d/dist/style.css';
 
 const { t } = useI18n()
 
-const technicalSkills = [
-  { name: 'Vue.js', level: 90 },
-  { name: 'TypeScript', level: 85 },
-  { name: 'Node.js', level: 80 },
-  { name: 'React', level: 75 },
-  { name: 'Python', level: 70 }
+const Skills = [
+  {
+    img: new URL('@/assets/Logos/Vue-logo.webp', import.meta.url).href,
+    name: 'Vue.js'
+  },
+  {
+    img: new URL('@/assets/Logos/Laravel-logo.png', import.meta.url).href,
+    name: 'Laravel'
+  },
+  {
+    img: new URL('@/assets/Logos/Docker-logo.png', import.meta.url).href,
+    name: 'Docker'
+  },
+  {
+    img: new URL('@/assets/Logos/Git-logo.png', import.meta.url).href,
+    name: 'GIT'
+  },
+  {
+    img: new URL('@/assets/Logos/php-logo.png', import.meta.url).href,
+    name: 'PHP'
+  },
+  {
+    img: new URL('@/assets/Logos/React-logo.png', import.meta.url).href,
+    name: 'React'
+  },
+  {
+    img: new URL('@/assets/Logos/Tailwind-logo.png', import.meta.url).href,
+    name: 'Tailwind'
+  },
+  {
+    img: new URL('@/assets/Logos/Vitejs-logo.png', import.meta.url).href,
+    name: 'Vite'
+  },
+  {
+    img: new URL('@/assets/Logos/sql-logo.png', import.meta.url).href,
+    name: 'SQL'
+  },
 ]
 
-const softSkills = [
-  'leadership',
-  'communication',
-  'teamwork',
-  'problemSolving',
-  'adaptability'
-]
+const isAutoplay = ref(true);
+  
+const stopAutoplay = () => {
+  isAutoplay.value = false;
+};
+
+const startAutoplay = () => {
+  isAutoplay.value = true;
+};
+
 </script>
 
 <template>
-  <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-200" id="skills">
+  <section class="py-16 bg-gray-100 dark:bg-gray-900 transition-colors duration-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
-        {{ t('skills.title') }}
-      </h2>
-      
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transform hover:scale-105 transition-all duration-300">
-          <h3 class="text-2xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">{{ t('skills.technical') }}</h3>
-          <div class="space-y-6">
-            <div v-for="skill in technicalSkills" :key="skill.name" class="relative">
-              <div class="flex justify-between mb-2">
-                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ skill.name }}</span>
-                <span class="text-sm font-medium text-indigo-600 dark:text-indigo-400">{{ skill.level }}%</span>
-              </div>
-              <div class="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full transition-all duration-500"
-                  :style="{ width: `${skill.level}%` }"
-                ></div>
-              </div>
-            </div>
+      <section class="flex justify-center">
+        <h2 class="title-section" v-text="t('skills.title')" />
+      </section>
+      <p class="mt-4 mb-8">
+        Soy un desarrollador apasionado con sólidas habilidades en comunicación, trabajo en equipo y resolución de problemas. Me adapto fácilmente a nuevos desafíos y disfruto liderando proyectos tanto individualmente como en grupo. Mi conjunto de habilidades técnicas incluye
+      </p>
+      <Carousel3d 
+        :autoplay="isAutoplay" 
+        :autoplay-time="2000" 
+        @mouseenter="stopAutoplay" 
+        @mouseleave="startAutoplay"
+      >
+        <Slide v-for="(skill, index) in Skills" :key="index" :index="index">
+          <div class="cursor-pointer flex items-center justify-center">
+            <img :src="skill.img" :alt="skill.name" class="h-16 md:h-28" />
           </div>
-        </div>
-
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 transform hover:scale-105 transition-transform duration-300">
-          <h3 class="text-2xl font-semibold mb-6 text-indigo-600 dark:text-indigo-400">{{ t('skills.soft') }}</h3>
-          <ul class="space-y-4">
-            <li
-              v-for="skill in softSkills"
-              :key="skill"
-              class="flex items-center text-gray-700 dark:text-gray-300 bg-indigo-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-indigo-100 dark:hover:bg-gray-600 transition-colors duration-300"
-            >
-              <svg
-                class="w-6 h-6 text-indigo-600 dark:text-indigo-400 mr-3"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="font-medium">{{ t(`skills.softSkills.${skill}`) }}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+        </Slide>
+      </Carousel3d>
     </div>
   </section>
 </template>

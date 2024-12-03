@@ -1,4 +1,13 @@
 {
+  "banner": {
+    "title": "Daniel Brito",
+    "profession": "Developer Web",
+    "description_line_1": "With 7 years of experience - Expert in creating immersive digital experiences",
+    "description_line_2": "With a solid knowledge in"
+  },
+  "common": {
+    "contact": "Contact"
+  },
   "nav": {
     "skills": "Skills",
     "portfolio": "Portfolio",
@@ -6,7 +15,7 @@
     "contact": "Contact"
   },
   "skills": {
-    "title": "Skills",
+    "title": "Technological Experience",
     "technical": "Technical Skills",
     "soft": "Soft Skills",
     "softSkills": {
@@ -19,7 +28,7 @@
   },
   "portfolio": {
     "title": "Portfolio",
-    "viewProject": "View Project",
+    "viewProject": "Go to github",
     "projects": {
       "ecommerce": "A full-featured e-commerce platform with cart management, payment processing, and order tracking.",
       "taskManager": "A collaborative task management application with real-time updates and team features."
